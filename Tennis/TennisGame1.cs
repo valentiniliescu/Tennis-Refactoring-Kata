@@ -5,14 +5,6 @@ namespace Tennis
         private int _scorePlayer1;
         private int _scorePlayer2;
 
-        public void WonPoint(string playerName)
-        {
-            if (playerName == "player1")
-                _scorePlayer1 += 1;
-            else
-                _scorePlayer2 += 1;
-        }
-
         public string GetScore()
         {
             var score = "";
