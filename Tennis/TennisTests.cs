@@ -83,7 +83,14 @@ namespace Tennis
             };
             for (var i = 0; i < 6; i++)
             {
-                game.WonPoint(points[i]);
+                if (points[i] == "player1")
+                {
+                    game.Player1WonPoint();
+                }
+                else
+                {
+                    game.Player2WonPoint();
+                }
                 Assert.AreEqual(expectedScores[i], game.GetScore());
             }
         }
