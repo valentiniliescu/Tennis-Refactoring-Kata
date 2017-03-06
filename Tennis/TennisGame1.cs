@@ -70,18 +70,12 @@ namespace Tennis
 
         public void Player1WonPoint()
         {
-            if ("player1" == "player1")
-                _scorePlayer1 += 1;
-            else
-                _scorePlayer2 += 1;
+            _scorePlayer1 += 1;
         }
 
         public void Player2WonPoint()
         {
-            if ("player2" == "player1")
-                _scorePlayer1 += 1;
-            else
-                _scorePlayer2 += 1;
+            _scorePlayer2 += 1;
         }
     }
 }
