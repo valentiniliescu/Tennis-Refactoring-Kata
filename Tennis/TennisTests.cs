@@ -55,11 +55,21 @@ namespace Tennis
             for (var i = 0; i < highestScore; i++)
             {
                 if (i < _player1Score)
-                    game.WonPoint("player1");
+                    Player1WonPoint(game);
                 if (i < _player2Score)
-                    game.WonPoint("player2");
+                    Player2WonPoint(game);
             }
             Assert.AreEqual(_expectedScore, game.GetScore());
+        }
+
+        private static void Player2WonPoint(ITennisGame game)
+        {
+            game.WonPoint("player2");
+        }
+
+        private static void Player1WonPoint(ITennisGame game)
+        {
+            game.WonPoint("player1");
         }
 
         [Test]
