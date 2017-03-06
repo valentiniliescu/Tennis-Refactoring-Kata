@@ -75,5 +75,15 @@ namespace Tennis
             }
             return score;
         }
+
+        public static void Player2WonPoint(ITennisGame game)
+        {
+            game.WonPoint("player2");
+        }
+
+        public static void Player1WonPoint(ITennisGame game)
+        {
+            game.WonPoint("player1");
+        }
     }
 }
