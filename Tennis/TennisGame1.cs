@@ -2,23 +2,23 @@ namespace Tennis
 {
     internal class TennisGame1 : ITennisGame
     {
-        private int _mScore1;
-        private int _mScore2;
+        private int _scorePlayer1;
+        private int _scorePlayer2;
 
         public void WonPoint(string playerName)
         {
             if (playerName == "player1")
-                _mScore1 += 1;
+                _scorePlayer1 += 1;
             else
-                _mScore2 += 1;
+                _scorePlayer2 += 1;
         }
 
         public string GetScore()
         {
             var score = "";
-            if (_mScore1 == _mScore2)
+            if (_scorePlayer1 == _scorePlayer2)
             {
-                switch (_mScore1)
+                switch (_scorePlayer1)
                 {
                     case 0:
                         score = "Love-All";
@@ -34,12 +34,12 @@ namespace Tennis
                         break;
                 }
             }
-            else if (_mScore1 >= 4 || _mScore2 >= 4)
+            else if (_scorePlayer1 >= 4 || _scorePlayer2 >= 4)
             {
-                var minusResult = _mScore1 - _mScore2;
-                if (minusResult == 1) score = "Advantage player1";
-                else if (minusResult == -1) score = "Advantage player2";
-                else if (minusResult >= 2) score = "Win for player1";
+                var scoreDifference = _scorePlayer1 - _scorePlayer2;
+                if (scoreDifference == 1) score = "Advantage player1";
+                else if (scoreDifference == -1) score = "Advantage player2";
+                else if (scoreDifference >= 2) score = "Win for player1";
                 else score = "Win for player2";
             }
             else
@@ -49,12 +49,12 @@ namespace Tennis
                     int tempScore;
                     if (i == 1)
                     {
-                        tempScore = _mScore1;
+                        tempScore = _scorePlayer1;
                     }
                     else
                     {
                         score += "-";
-                        tempScore = _mScore2;
+                        tempScore = _scorePlayer2;
                     }
                     switch (tempScore)
                     {
