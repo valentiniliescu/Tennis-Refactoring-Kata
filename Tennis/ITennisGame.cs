@@ -4,5 +4,7 @@ namespace Tennis
     {
         void WonPoint(string playerName);
         string GetScore();
+        void Player1WonPoint();
+        void Player2WonPoint();
     }
 }
