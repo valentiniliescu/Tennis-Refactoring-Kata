@@ -1,5 +1,6 @@
 using System;
 using NUnit.Framework;
+using Tennis.Models;
 
 namespace Tennis
 {
@@ -52,21 +53,7 @@ namespace Tennis
         [Test]
         public void CheckTennisGame1()
         {
-            var game = new TennisGame1("player1", "player2");
-            CheckAllScores(game);
-        }
-
-        [Test]
-        public void CheckTennisGame2()
-        {
-            var game = new TennisGame2("player1", "player2");
-            CheckAllScores(game);
-        }
-
-        [Test]
-        public void CheckTennisGame3()
-        {
-            var game = new TennisGame3("player1", "player2");
+            var game = new TennisGame1(new Player("player1"), new Player("player2"));
             CheckAllScores(game);
         }
 
@@ -76,9 +63,9 @@ namespace Tennis
             for (var i = 0; i < highestScore; i++)
             {
                 if (i < this.player1Score)
-                    game.WonPoint("player1");
+                    game.WonPoint(new Player("player1"));
                 if (i < this.player2Score)
-                    game.WonPoint("player2");
+                    game.WonPoint(new Player("player2"));
             }
             Assert.AreEqual(this.expectedScore, game.GetScore());
         }
@@ -91,21 +78,7 @@ namespace Tennis
         [Test]
         public void CheckGame1()
         {
-            var game = new TennisGame1("player1", "player2");
-            RealisticTennisGame(game);
-        }
-
-        [Test]
-        public void CheckGame2()
-        {
-            var game = new TennisGame2("player1", "player2");
-            RealisticTennisGame(game);
-        }
-
-        [Test]
-        public void CheckGame3()
-        {
-            var game = new TennisGame3("player1", "player2");
+            var game = new TennisGame1(new Player("player1"), new Player("player2"));
             RealisticTennisGame(game);
         }
 
@@ -115,7 +88,7 @@ namespace Tennis
             string[] expectedScores = { "Fifteen-Love", "Thirty-Love", "Thirty-Fifteen", "Thirty-All", "Forty-Thirty", "Win for player1" };
             for (var i = 0; i < 6; i++)
             {
-                game.WonPoint(points[i]);
+                game.WonPoint(new Player(points[i]));
                 Assert.AreEqual(expectedScores[i], game.GetScore());
             }
         }
