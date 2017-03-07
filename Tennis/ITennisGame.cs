@@ -4,8 +4,9 @@ namespace Tennis
 {
     public interface ITennisGame
     {
-        void WonPoint(Player player);
         string GetScore();
+        void Player1WonPoint();
+        void Player2WonPoint();
     }
 }
 

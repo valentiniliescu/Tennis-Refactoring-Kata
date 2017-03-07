@@ -1,3 +1,4 @@
+using System;
 using Tennis.Models;
 
 namespace Tennis
@@ -11,14 +12,6 @@ namespace Tennis
         {
             m_player1 = player1;
             m_player2 = player2;
-        }
-
-        public void WonPoint(Player player)
-        {
-            if (player.Name.Equals("player1", System.StringComparison.OrdinalIgnoreCase))
-                m_player1.WonPoint();
-            else
-                m_player2.WonPoint();
         }
 
         public string GetScore()
@@ -76,6 +69,16 @@ namespace Tennis
                 }
             }
             return score;
+        }
+
+        public void Player1WonPoint()
+        {
+            m_player1.WonPoint();
+        }
+
+        public void Player2WonPoint()
+        {
+            m_player2.WonPoint();
         }
     }
 }
