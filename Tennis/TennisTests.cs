@@ -63,9 +63,13 @@ namespace Tennis
             for (var i = 0; i < highestScore; i++)
             {
                 if (i < this.player1Score)
-                    game.Player1WonPoint();
+                {
+                    game.Player1.WonPoint();
+                }
                 if (i < this.player2Score)
-                    game.Player2WonPoint();
+                {
+                    game.Player2.WonPoint();
+                }
             }
             Assert.AreEqual(this.expectedScore, game.GetScore());
         }
@@ -90,10 +94,10 @@ namespace Tennis
             {
                 if(String.Equals(points[i], "player1", StringComparison.OrdinalIgnoreCase))
                 {
-                    game.Player1WonPoint();
+                    game.Player1.WonPoint();
                 } else
                 {
-                    game.Player2WonPoint();
+                    game.Player2.WonPoint();
                 }
                 Assert.AreEqual(expectedScores[i], game.GetScore());
             }
