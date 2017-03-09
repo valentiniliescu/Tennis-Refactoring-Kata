@@ -88,17 +88,11 @@ namespace Tennis
 
         private void RealisticTennisGame(ITennisGame game)
         {
-            string[] points = { "player1", "player1", "player2", "player2", "player1", "player1" };
+            Player[] players = { game.Player1, game.Player1, game.Player2, game.Player2, game.Player1, game.Player1 };
             string[] expectedScores = { "Fifteen-Love", "Thirty-Love", "Thirty-Fifteen", "Thirty-All", "Forty-Thirty", "Win for player1" };
             for (var i = 0; i < 6; i++)
             {
-                if(String.Equals(points[i], "player1", StringComparison.OrdinalIgnoreCase))
-                {
-                    game.Player1.WonPoint();
-                } else
-                {
-                    game.Player2.WonPoint();
-                }
+                players[i].WonPoint();
                 Assert.AreEqual(expectedScores[i], game.GetScore());
             }
         }
