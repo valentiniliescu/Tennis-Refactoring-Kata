@@ -70,16 +70,6 @@ namespace Tennis
             }
             return score;
         }
-
-        public void Player1WonPoint()
-        {
-            Player1.WonPoint();
-        }
-
-        public void Player2WonPoint()
-        {
-            Player2.WonPoint();
-        }
     }
 }
 
