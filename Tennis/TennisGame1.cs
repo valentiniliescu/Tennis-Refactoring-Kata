@@ -5,22 +5,22 @@ namespace Tennis
 {
     class TennisGame1 : ITennisGame
     {
-        private Player m_player1;
-        private Player m_player2;
+        public Player Player1 { get; }
+        public Player Player2 { get; }
 
         public TennisGame1(Player player1, Player player2)
         {
-            m_player1 = player1;
-            m_player2 = player2;
+            Player1 = player1;
+            Player2 = player2;
         }
 
         public string GetScore()
         {
             string score = "";
             var tempScore = 0;
-            if (m_player1.Score == m_player2.Score)
+            if (Player1.Score == Player2.Score)
             {
-                switch (m_player1.Score)
+                switch (Player1.Score)
                 {
                     case 0:
                         score = "Love-All";
@@ -37,9 +37,9 @@ namespace Tennis
 
                 }
             }
-            else if (m_player1.Score >= 4 || m_player2.Score >= 4)
+            else if (Player1.Score >= 4 || Player2.Score >= 4)
             {
-                var minusResult = m_player1.Score - m_player2.Score;
+                var minusResult = Player1.Score - Player2.Score;
                 if (minusResult == 1) score = "Advantage player1";
                 else if (minusResult == -1) score = "Advantage player2";
                 else if (minusResult >= 2) score = "Win for player1";
@@ -49,8 +49,8 @@ namespace Tennis
             {
                 for (var i = 1; i < 3; i++)
                 {
-                    if (i == 1) tempScore = m_player1.Score;
-                    else { score += "-"; tempScore = m_player2.Score; }
+                    if (i == 1) tempScore = Player1.Score;
+                    else { score += "-"; tempScore = Player2.Score; }
                     switch (tempScore)
                     {
                         case 0:
@@ -73,12 +73,12 @@ namespace Tennis
 
         public void Player1WonPoint()
         {
-            m_player1.WonPoint();
+            Player1.WonPoint();
         }
 
         public void Player2WonPoint()
         {
-            m_player2.WonPoint();
+            Player2.WonPoint();
         }
     }
 }
