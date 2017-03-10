@@ -8,8 +8,6 @@ namespace Tennis
         public Player Player1 { get; }
         public Player Player2 { get; }
 
-        private static readonly string[] ScoreLabels = { "Love", "Fifteen" , "Thirty", "Forty" };
-
         public TennisGame1(Player player1, Player player2)
         {
             Player1 = player1;
@@ -19,24 +17,16 @@ namespace Tennis
         public string GetScore()
         {
             string score = "";
-            var tempScore = 0;
             if (ScoreLead == 0)
             {
-                switch (Player1.Score)
+                if (Player1.Score < 3)
                 {
-                    case 0:
-                        score = "Love-All";
-                        break;
-                    case 1:
-                        score = "Fifteen-All";
-                        break;
-                    case 2:
-                        score = "Thirty-All";
-                        break;
-                    default:
-                        score = "Deuce";
-                        break;
-
+                    var player1ScoreLabel = GetLabelForScore(Player1.Score);
+                    score = $"{player1ScoreLabel}-All";
+                }
+                else
+                {
+                    score = "Deuce";
                 }
             }
             else if (Player1.Score >= 4 || Player2.Score >= 4)
@@ -46,18 +36,20 @@ namespace Tennis
             }
             else
             {
-                for (var i = 1; i < 3; i++)
-                {
-                    if (i == 1) tempScore = Player1.Score;
-                    else { score += "-"; tempScore = Player2.Score; }
-                    score += ScoreLabels[tempScore];
-                }
+                var player1ScoreLabel = GetLabelForScore(Player1.Score);
+                var player2ScoreLabel = GetLabelForScore(Player2.Score);
+                score = $"{player1ScoreLabel}-{player2ScoreLabel}";
             }
             return score;
         }
 
         private int ScoreLead => Math.Abs(Player1.Score - Player2.Score);
         private Player LeadingPlayer => Player1.Score > Player2.Score ? Player1 : Player2;
+
+        private static string GetLabelForScore(int score)
+        {
+            return new string[] { "Love", "Fifteen" , "Thirty", "Forty" }[score];
+        }
     }
 }
 
