@@ -2,7 +2,7 @@ namespace Tennis
 {
     public interface ITennisGame
     {
-        void WonPoint(string playerName);
+        void WonPoint(TennisPlayer tennisPlayer);
         string GetScore();
     }
 }

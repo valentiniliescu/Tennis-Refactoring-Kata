@@ -62,9 +62,9 @@ namespace Tennis
             for (var i = 0; i < highestScore; i++)
             {
                 if (i < this._player1MaxScore)
-                    game.WonPoint("player1");
+                    game.WonPoint(TennisPlayer.Player1);
                 if (i < this._player2MaxScore)
-                    game.WonPoint("player2");
+                    game.WonPoint(TennisPlayer.Player2);
             }
             Assert.AreEqual(this._expectedGameState, game.GetScore());
         }
@@ -87,7 +87,8 @@ namespace Tennis
             string[] expectedScores = { "Fifteen-Love", "Thirty-Love", "Thirty-Fifteen", "Thirty-All", "Forty-Thirty", "Win for player1" };
             for (var i = 0; i < 6; i++)
             {
-                game.WonPoint(points[i]);
+                string playerName = points[i];
+                game.WonPoint(playerName == "player1" ? TennisPlayer.Player1 : TennisPlayer.Player2);
                 Assert.AreEqual(expectedScores[i], game.GetScore());
             }
         }

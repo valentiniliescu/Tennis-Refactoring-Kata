@@ -1,13 +1,19 @@
 namespace Tennis
 {
+    enum TennisPlayer
+    {
+        Player1,
+        Player2
+    }
+
     class TennisGame1 : ITennisGame
     {
         private int m_score1 = 0;
         private int m_score2 = 0;
 
-        public void WonPoint(string playerName)
+        public void WonPoint(TennisPlayer tennisPlayer)
         {
-            if (playerName == "player1")
+            if (tennisPlayer == TennisPlayer.Player1)
                 m_score1 += 1;
             else
                 m_score2 += 1;
