@@ -38,35 +38,35 @@ namespace Tennis
     [TestFixture(14, 16, "Win for player2")]
     public class TennisTests
     {
-        private readonly int player1Score;
-        private readonly int player2Score;
-        private readonly string expectedScore;
+        private readonly int _player1MaxScore;
+        private readonly int _player2MaxScore;
+        private readonly string _expectedGameState;
 
-        public TennisTests(int player1Score, int player2Score, string expectedScore)
+        public TennisTests(int player1MaxScore, int player2MaxScore, string expectedGameState)
         {
-            this.player1Score = player1Score;
-            this.player2Score = player2Score;
-            this.expectedScore = expectedScore;
+            this._player1MaxScore = player1MaxScore;
+            this._player2MaxScore = player2MaxScore;
+            this._expectedGameState = expectedGameState;
         }
 
         [Test]
         public void CheckTennisGame1()
         {
-            var game = new TennisGame1("player1", "player2");
+            var game = new TennisGame1();
             CheckAllScores(game);
         }
 
         private void CheckAllScores(ITennisGame game)
         {
-            var highestScore = Math.Max(this.player1Score, this.player2Score);
+            var highestScore = Math.Max(this._player1MaxScore, this._player2MaxScore);
             for (var i = 0; i < highestScore; i++)
             {
-                if (i < this.player1Score)
+                if (i < this._player1MaxScore)
                     game.WonPoint("player1");
-                if (i < this.player2Score)
+                if (i < this._player2MaxScore)
                     game.WonPoint("player2");
             }
-            Assert.AreEqual(this.expectedScore, game.GetScore());
+            Assert.AreEqual(this._expectedGameState, game.GetScore());
         }
 
     }
@@ -77,7 +77,7 @@ namespace Tennis
         [Test]
         public void CheckGame1()
         {
-            var game = new TennisGame1("player1", "player2");
+            var game = new TennisGame1();
             RealisticTennisGame(game);
         }
 
