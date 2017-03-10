@@ -1,6 +1,6 @@
 namespace Tennis
 {
-    enum TennisPlayer
+    public enum TennisPlayer
     {
         Player1,
         Player2
