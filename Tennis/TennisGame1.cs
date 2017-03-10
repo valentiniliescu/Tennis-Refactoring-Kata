@@ -8,6 +8,8 @@ namespace Tennis
         public Player Player1 { get; }
         public Player Player2 { get; }
 
+        private static readonly string[] ScoreLabels = { "Love", "Fifteen" , "Thirty", "Forty" };
+
         public TennisGame1(Player player1, Player player2)
         {
             Player1 = player1;
@@ -48,21 +50,7 @@ namespace Tennis
                 {
                     if (i == 1) tempScore = Player1.Score;
                     else { score += "-"; tempScore = Player2.Score; }
-                    switch (tempScore)
-                    {
-                        case 0:
-                            score += "Love";
-                            break;
-                        case 1:
-                            score += "Fifteen";
-                            break;
-                        case 2:
-                            score += "Thirty";
-                            break;
-                        case 3:
-                            score += "Forty";
-                            break;
-                    }
+                    score += ScoreLabels[tempScore];
                 }
             }
             return score;
