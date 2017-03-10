@@ -40,10 +40,10 @@ namespace Tennis
             else if (Player1.Score >= 4 || Player2.Score >= 4)
             {
                 var minusResult = Player1.Score - Player2.Score;
-                if (minusResult == 1) score = "Advantage player1";
-                else if (minusResult == -1) score = "Advantage player2";
-                else if (minusResult >= 2) score = "Win for player1";
-                else score = "Win for player2";
+                if (minusResult == 1) score = $"Advantage {Player1.Name}";
+                else if (minusResult == -1) score = $"Advantage {Player2.Name}";
+                else if (minusResult >= 2) score = $"Win for {Player1.Name}";
+                else score = $"Win for {Player2.Name}";
             }
             else
             {
