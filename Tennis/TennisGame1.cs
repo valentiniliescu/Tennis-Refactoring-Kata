@@ -21,7 +21,7 @@ namespace Tennis
             {
                 if (Player1.Score < 3)
                 {
-                    var player1ScoreLabel = GetLabelForScore(Player1.Score);
+                    var player1ScoreLabel = ScoreLabels.GetLabelForScore(Player1.Score);
                     score = $"{player1ScoreLabel}-All";
                 }
                 else
@@ -36,8 +36,8 @@ namespace Tennis
             }
             else
             {
-                var player1ScoreLabel = GetLabelForScore(Player1.Score);
-                var player2ScoreLabel = GetLabelForScore(Player2.Score);
+                var player1ScoreLabel = ScoreLabels.GetLabelForScore(Player1.Score);
+                var player2ScoreLabel = ScoreLabels.GetLabelForScore(Player2.Score);
                 score = $"{player1ScoreLabel}-{player2ScoreLabel}";
             }
             return score;
@@ -45,11 +45,6 @@ namespace Tennis
 
         private int ScoreLead => Math.Abs(Player1.Score - Player2.Score);
         private Player LeadingPlayer => Player1.Score > Player2.Score ? Player1 : Player2;
-
-        private static string GetLabelForScore(int score)
-        {
-            return new string[] { "Love", "Fifteen" , "Thirty", "Forty" }[score];
-        }
     }
 }
 
