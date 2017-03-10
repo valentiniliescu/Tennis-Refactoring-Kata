@@ -18,7 +18,7 @@ namespace Tennis
         {
             string score = "";
             var tempScore = 0;
-            if (Player1.Score == Player2.Score)
+            if (ScoreLead == 0)
             {
                 switch (Player1.Score)
                 {
@@ -39,11 +39,8 @@ namespace Tennis
             }
             else if (Player1.Score >= 4 || Player2.Score >= 4)
             {
-                var minusResult = Player1.Score - Player2.Score;
-                if (minusResult == 1) score = $"Advantage {Player1.Name}";
-                else if (minusResult == -1) score = $"Advantage {Player2.Name}";
-                else if (minusResult >= 2) score = $"Win for {Player1.Name}";
-                else score = $"Win for {Player2.Name}";
+                if (ScoreLead == 1) score = $"Advantage {LeadingPlayer.Name}";
+                else score = $"Win for {LeadingPlayer.Name}";
             }
             else
             {
@@ -70,6 +67,9 @@ namespace Tennis
             }
             return score;
         }
+
+        private int ScoreLead => Math.Abs(Player1.Score - Player2.Score);
+        private Player LeadingPlayer => Player1.Score > Player2.Score ? Player1 : Player2;
     }
 }
 
