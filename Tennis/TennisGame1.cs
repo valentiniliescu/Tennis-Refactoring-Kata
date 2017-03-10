@@ -1,11 +1,5 @@
 namespace Tennis
 {
-    enum TennisPlayer
-    {
-        Player1,
-        Player2
-    }
-
     class TennisGame1 : ITennisGame
     {
         private int m_score1 = 0;
