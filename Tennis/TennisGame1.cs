@@ -17,7 +17,7 @@ namespace Tennis
         public string GetScore()
         {
             string score = "";
-            if (ScoreLead == 0)
+            if (IsTie)
             {
                 if (Player1.Score < 3)
                 {
@@ -43,6 +43,7 @@ namespace Tennis
             return score;
         }
 
+        private bool IsTie => ScoreLead == 0;
         private int ScoreLead => Math.Abs(Player1.Score - Player2.Score);
         private Player LeadingPlayer => Player1.Score > Player2.Score ? Player1 : Player2;
     }
