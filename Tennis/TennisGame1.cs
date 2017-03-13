@@ -29,16 +29,29 @@ namespace Tennis
                     score = "Deuce";
                 }
             }
-            else if (Player1.Score >= 4 || Player2.Score >= 4)
+            else if (Player1.Score >= 3 && Player2.Score >= 3)
             {
-                if (ScoreLead == 1) score = $"Advantage {LeadingPlayer.Name}";
-                else score = $"Win for {LeadingPlayer.Name}";
+                if (ScoreLead == 1)
+                {
+                    score = $"Advantage {LeadingPlayer.Name}";
+                }
+                else if (ScoreLead == 2)
+                {
+                    score = $"Win for {LeadingPlayer.Name}";
+                }
             }
             else
             {
-                var player1ScoreLabel = ScoreLabels.GetLabelForScore(Player1.Score);
-                var player2ScoreLabel = ScoreLabels.GetLabelForScore(Player2.Score);
-                score = $"{player1ScoreLabel}-{player2ScoreLabel}";
+                if (Player1.Score >= 4 || Player2.Score >= 4)
+                {
+                    score = $"Win for {LeadingPlayer.Name}";
+                }
+                else
+                {
+                    var player1ScoreLabel = ScoreLabels.GetLabelForScore(Player1.Score);
+                    var player2ScoreLabel = ScoreLabels.GetLabelForScore(Player2.Score);
+                    score = $"{player1ScoreLabel}-{player2ScoreLabel}";
+                } 
             }
             return score;
         }
