@@ -29,20 +29,20 @@ namespace Tennis
                     score = "Deuce";
                 }
             }
-            else if (Player1.Score >= 3 && Player2.Score >= 3)
+            else if (IsAdvantageScoring)
             {
                 if (ScoreLead == 1)
                 {
                     score = $"Advantage {LeadingPlayer.Name}";
                 }
-                else if (ScoreLead == 2)
+                else
                 {
                     score = $"Win for {LeadingPlayer.Name}";
                 }
             }
             else
             {
-                if (Player1.Score >= 4 || Player2.Score >= 4)
+                if (LeadingPlayer.Score == 4)
                 {
                     score = $"Win for {LeadingPlayer.Name}";
                 }
@@ -56,6 +56,7 @@ namespace Tennis
             return score;
         }
 
+        private bool IsAdvantageScoring => Player1.Score >= 3 && Player2.Score >= 3;
         private bool IsTie => ScoreLead == 0;
         private int ScoreLead => Math.Abs(Player1.Score - Player2.Score);
         private Player LeadingPlayer => Player1.Score > Player2.Score ? Player1 : Player2;
