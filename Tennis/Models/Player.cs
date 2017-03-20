@@ -8,13 +8,13 @@
 
         public Player(string name)
         {
-            this.Name = name;
-            this.Score = 0;
+            Name = name;
+            Score = 0;
         }
 
         public void WonPoint()
         {
-            this.Score++;
+            Score++;
         }
     }
 }
