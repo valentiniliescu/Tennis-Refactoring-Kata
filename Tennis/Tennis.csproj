@@ -48,7 +48,7 @@
     <Compile Include="ITennisGame.cs" />
     <Compile Include="ScoreLabels.cs" />
     <Compile Include="TennisGame1.cs" />
-    <Compile Include="TennisTests.cs" />
+    <Compile Include="PlayerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
