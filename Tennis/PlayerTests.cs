@@ -14,7 +14,13 @@ namespace Tennis
             Assert.AreEqual("player1", player.Name);
         }
 
-
+        [Test]
+        public void PlayerShouldStartWithZeroScore()
+        {
+            var player = new Player("player1");
+            
+            Assert.AreEqual(0, player.Score);
+        }
     }
 }
 
