@@ -21,6 +21,16 @@ namespace Tennis
             
             Assert.AreEqual(0, player.Score);
         }
+
+        [Test]
+        public void WinningAPointShouldIncrementTheScore()
+        {
+            var player = new Player("player1");
+
+            player.WonPoint();
+
+            Assert.AreEqual(1, player.Score);
+        }
     }
 }
 
