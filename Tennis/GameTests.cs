@@ -9,16 +9,23 @@ namespace Tennis
     {
         private static TennisGame1 CreateGame()
         {
-            return new TennisGame1(new Player("player1"), new Player("player2"));
+            var player1 = new Player("player1");
+            var player2 = new Player("player2");
+
+            return new TennisGame1(player1, player2);
         }
 
-        private static void GetToDeuce(TennisGame1 game)
+        private static TennisGame1 CreateGameAndGetToDeuce()
         {
+            var game = CreateGame();
+
             Enumerable.Range(0, 3).ToList().ForEach(i =>
             {
                 game.Player1.WonPoint();
                 game.Player2.WonPoint();
             });
+
+            return game;
         }
 
         [Test]
@@ -32,9 +39,7 @@ namespace Tennis
         [Test]
         public void Deuce()
         {
-            var game = CreateGame();
-
-            GetToDeuce(game);
+            var game = CreateGameAndGetToDeuce();
 
             Assert.AreEqual("Deuce", game.GetScore());
         }
@@ -42,9 +47,8 @@ namespace Tennis
         [Test]
         public void Advantage()
         {
-            var game = CreateGame();
+            var game = CreateGameAndGetToDeuce();
 
-            GetToDeuce(game);
             game.Player1.WonPoint();
 
             Assert.AreEqual("Advantage player1", game.GetScore());
@@ -53,9 +57,8 @@ namespace Tennis
         [Test]
         public void WinInAdvantageScoring()
         {
-            var game = CreateGame();
+            var game = CreateGameAndGetToDeuce();
 
-            GetToDeuce(game);
             game.Player1.WonPoint();
             game.Player1.WonPoint();
 
