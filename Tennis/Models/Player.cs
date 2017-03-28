@@ -10,10 +10,10 @@
         {
         }
 
-        internal Player(string name, int initialPoints)
+        internal Player(string name, int points)
         {
             Name = name;
-            Points = initialPoints;
+            Points = points;
         }
 
         public void WonPoint()

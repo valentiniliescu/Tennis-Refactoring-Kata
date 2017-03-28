@@ -6,10 +6,10 @@ namespace Tennis
     [TestFixture]
     public class GameTests
     {
-        private static TennisGame1 CreateGameWithPlayerPoints(int player1InitialPoints, int player2InitialPoints)
+        private static TennisGame1 CreateGameWithPlayerPoints(int player1Points, int player2Points)
         {
-            var player1 = new Player("player1", player1InitialPoints);
-            var player2 = new Player("player2", player2InitialPoints);
+            var player1 = new Player("player1", player1Points);
+            var player2 = new Player("player2", player2Points);
 
             return new TennisGame1(player1, player2);
         }
