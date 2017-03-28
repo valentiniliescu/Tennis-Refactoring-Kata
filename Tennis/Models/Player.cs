@@ -6,10 +6,14 @@
 
         public int Points { get; private set; }
 
-        public Player(string name)
+        public Player(string name): this(name, 0)
+        {
+        }
+
+        internal Player(string name, int initialPoints)
         {
             Name = name;
-            Points = 0;
+            Points = initialPoints;
         }
 
         public void WonPoint()

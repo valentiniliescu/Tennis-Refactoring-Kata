@@ -1,4 +1,3 @@
-using System.Linq;
 using NUnit.Framework;
 using Tennis.Models;
 
@@ -7,31 +6,18 @@ namespace Tennis
     [TestFixture]
     public class GameTests
     {
-        private static TennisGame1 CreateGame()
+        private static TennisGame1 CreateGameWithPlayerPoints(int player1InitialPoints, int player2InitialPoints)
         {
-            var player1 = new Player("player1");
-            var player2 = new Player("player2");
+            var player1 = new Player("player1", player1InitialPoints);
+            var player2 = new Player("player2", player2InitialPoints);
 
             return new TennisGame1(player1, player2);
-        }
-
-        private static TennisGame1 CreateGameAndGetToDeuce()
-        {
-            var game = CreateGame();
-
-            Enumerable.Range(0, 3).ToList().ForEach(i =>
-            {
-                game.Player1.WonPoint();
-                game.Player2.WonPoint();
-            });
-
-            return game;
         }
 
         [Test]
         public void LoveAll()
         {
-            var game = CreateGame();
+            var game = CreateGameWithPlayerPoints(0, 0);
 
             Assert.AreEqual("Love-All", game.GetScore());
         }
@@ -39,7 +25,7 @@ namespace Tennis
         [Test]
         public void Deuce()
         {
-            var game = CreateGameAndGetToDeuce();
+            var game = CreateGameWithPlayerPoints(3, 3);
 
             Assert.AreEqual("Deuce", game.GetScore());
         }
@@ -47,9 +33,7 @@ namespace Tennis
         [Test]
         public void Advantage()
         {
-            var game = CreateGameAndGetToDeuce();
-
-            game.Player1.WonPoint();
+            var game = CreateGameWithPlayerPoints(4, 3);
 
             Assert.AreEqual("Advantage player1", game.GetScore());
         }
@@ -57,10 +41,7 @@ namespace Tennis
         [Test]
         public void WinInAdvantageScoring()
         {
-            var game = CreateGameAndGetToDeuce();
-
-            game.Player1.WonPoint();
-            game.Player1.WonPoint();
+            var game = CreateGameWithPlayerPoints(5, 3);
 
             Assert.AreEqual("Win for player1", game.GetScore());
         }
@@ -68,12 +49,7 @@ namespace Tennis
         [Test]
         public void WinWithMoreThan2Points()
         {
-            var game = CreateGame();
-
-            game.Player1.WonPoint();
-            game.Player1.WonPoint();
-            game.Player1.WonPoint();
-            game.Player1.WonPoint();
+            var game = CreateGameWithPlayerPoints(4, 0);
 
             Assert.AreEqual("Win for player1", game.GetScore());
         }
@@ -81,9 +57,7 @@ namespace Tennis
         [Test]
         public void FifteenLove()
         {
-            var game = CreateGame();
-
-            game.Player1.WonPoint();
+            var game = CreateGameWithPlayerPoints(1, 0);
 
             Assert.AreEqual("Fifteen-Love", game.GetScore());
         }
