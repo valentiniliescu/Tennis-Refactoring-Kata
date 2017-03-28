@@ -1,12 +1,12 @@
 namespace Tennis
 {
-    static class ScoreLabels
+    internal static class PointScoreLabels
     {
         private static readonly string[] Labels = { "Love", "Fifteen" , "Thirty", "Forty" };
 
-        public static string GetLabelForScore(int score)
+        public static string GetScoreLabelForPoints(int points)
         {
-            return Labels[score];
+            return Labels[points];
         }
     }
 }

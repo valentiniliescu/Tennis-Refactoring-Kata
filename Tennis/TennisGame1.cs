@@ -21,7 +21,7 @@ namespace Tennis
             {
                 if (Player1.Points < 3)
                 {
-                    var player1ScoreLabel = ScoreLabels.GetLabelForScore(Player1.Points);
+                    var player1ScoreLabel = PointScoreLabels.GetScoreLabelForPoints(Player1.Points);
                     score = $"{player1ScoreLabel}-All";
                 }
                 else
@@ -48,8 +48,8 @@ namespace Tennis
                 }
                 else
                 {
-                    var player1ScoreLabel = ScoreLabels.GetLabelForScore(Player1.Points);
-                    var player2ScoreLabel = ScoreLabels.GetLabelForScore(Player2.Points);
+                    var player1ScoreLabel = PointScoreLabels.GetScoreLabelForPoints(Player1.Points);
+                    var player2ScoreLabel = PointScoreLabels.GetScoreLabelForPoints(Player2.Points);
                     score = $"{player1ScoreLabel}-{player2ScoreLabel}";
                 } 
             }
