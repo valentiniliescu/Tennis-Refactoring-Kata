@@ -15,21 +15,21 @@ namespace Tennis
         }
 
         [Test]
-        public void PlayerShouldStartWithZeroScore()
+        public void PlayerShouldStartWithZeroPoints()
         {
             var player = new Player("player1");
             
-            Assert.AreEqual(0, player.Score);
+            Assert.AreEqual(0, player.Points);
         }
 
         [Test]
-        public void WinningAPointShouldIncrementTheScore()
+        public void WinningAPointShouldIncrementThePoints()
         {
             var player = new Player("player1");
 
             player.WonPoint();
 
-            Assert.AreEqual(1, player.Score);
+            Assert.AreEqual(1, player.Points);
         }
     }
 }

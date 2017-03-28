@@ -19,9 +19,9 @@ namespace Tennis
             string score = "";
             if (IsTie)
             {
-                if (Player1.Score < 3)
+                if (Player1.Points < 3)
                 {
-                    var player1ScoreLabel = ScoreLabels.GetLabelForScore(Player1.Score);
+                    var player1ScoreLabel = ScoreLabels.GetLabelForScore(Player1.Points);
                     score = $"{player1ScoreLabel}-All";
                 }
                 else
@@ -42,24 +42,24 @@ namespace Tennis
             }
             else
             {
-                if (LeadingPlayer.Score == 4)
+                if (LeadingPlayer.Points == 4)
                 {
                     score = $"Win for {LeadingPlayer.Name}";
                 }
                 else
                 {
-                    var player1ScoreLabel = ScoreLabels.GetLabelForScore(Player1.Score);
-                    var player2ScoreLabel = ScoreLabels.GetLabelForScore(Player2.Score);
+                    var player1ScoreLabel = ScoreLabels.GetLabelForScore(Player1.Points);
+                    var player2ScoreLabel = ScoreLabels.GetLabelForScore(Player2.Points);
                     score = $"{player1ScoreLabel}-{player2ScoreLabel}";
                 } 
             }
             return score;
         }
 
-        private bool IsAdvantageScoring => Player1.Score >= 3 && Player2.Score >= 3;
+        private bool IsAdvantageScoring => Player1.Points >= 3 && Player2.Points >= 3;
         private bool IsTie => ScoreLead == 0;
-        private int ScoreLead => Math.Abs(Player1.Score - Player2.Score);
-        private Player LeadingPlayer => Player1.Score > Player2.Score ? Player1 : Player2;
+        private int ScoreLead => Math.Abs(Player1.Points - Player2.Points);
+        private Player LeadingPlayer => Player1.Points > Player2.Points ? Player1 : Player2;
     }
 }
 

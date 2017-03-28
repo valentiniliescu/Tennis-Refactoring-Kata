@@ -4,17 +4,17 @@
     {
         public string Name { get; }
 
-        public int Score { get; private set; }
+        public int Points { get; private set; }
 
         public Player(string name)
         {
             Name = name;
-            Score = 0;
+            Points = 0;
         }
 
         public void WonPoint()
         {
-            Score++;
+            Points++;
         }
     }
 }
